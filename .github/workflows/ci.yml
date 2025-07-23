@@ -1,0 +1,54 @@
+name: Multi-platform CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: npm install || true
+      - name: Build web app
+        run: npm run build
+
+  desktop:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: desktop
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: npm install || true
+      - name: Build desktop app
+        run: npm run build
+
+  android:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: android
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check for build.gradle
+        run: test -f build.gradle
+
+  windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: windows
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check for solution file
+        run: dir *.sln
+      - name: Check for manifest
+        run: dir AppPackage\Package.appxmanifest
