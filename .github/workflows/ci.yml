@@ -39,8 +39,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Check for build.gradle
-        run: test -f build.gradle
-
+        run: test -f path/to/your/actual/build.gradle
   windows:
     runs-on: windows-latest
     defaults:
