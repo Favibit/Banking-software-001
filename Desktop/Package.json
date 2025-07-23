@@ -1,0 +1,10 @@
+{
+  "name": "desktop-app",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "echo \"Starting desktop app...\"",
+    "build": "echo \"Building desktop app...\"",
+    "test": "echo \"No tests yet\" && exit 0"
+  }
+}
